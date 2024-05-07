@@ -90,8 +90,12 @@ class _HomePageState extends State<HomePage> {
           elevation: 0,
         ),
         floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.yellow,
           onPressed: createNewTask,
           child: Icon(Icons.add),
+          shape: RoundedRectangleBorder(
+              side: BorderSide(width: 3, color: Colors.yellow),
+              borderRadius: BorderRadius.circular(25)),
         ),
         body: ListView.builder(
           itemCount: db.toDoList.length,
