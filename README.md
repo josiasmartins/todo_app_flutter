@@ -16,3 +16,8 @@ flutter run
 dart pub add nome_library
 ```
 
+### Baixar as dependencias para desenvolvimento somente
+```bash
+dart pub add -d nome_library
+```
+
