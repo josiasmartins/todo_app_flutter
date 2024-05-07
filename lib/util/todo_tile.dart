@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:flutter_slidable/flutter_slidable.dart";
 
 class ToDoTile extends StatelessWidget {
   final String taskName;
@@ -14,31 +15,32 @@ class ToDoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 25.0, right: 25, top: 25),
-      child: Container(
-        padding: EdgeInsets.all(24),
-        child: Row(
-          children: [
-            // checbox
-            Checkbox(
-              value: taskCompleted,
-              onChanged: onChanged,
-              activeColor: Colors.black,
-            ),
+        padding: const EdgeInsets.only(left: 25.0, right: 25, top: 25),
+        child: Slidable(
+          child: Container(
+            padding: EdgeInsets.all(24),
+            child: Row(
+              children: [
+                // checbox
+                Checkbox(
+                  value: taskCompleted,
+                  onChanged: onChanged,
+                  activeColor: Colors.black,
+                ),
 
-            // task name
-            Text(
-              taskName,
-              style: TextStyle(
-                  decoration: taskCompleted
-                      ? TextDecoration.lineThrough
-                      : TextDecoration.none),
+                // task name
+                Text(
+                  taskName,
+                  style: TextStyle(
+                      decoration: taskCompleted
+                          ? TextDecoration.lineThrough
+                          : TextDecoration.none),
+                ),
+              ],
             ),
-          ],
-        ),
-        decoration: BoxDecoration(
-            color: Colors.yellow, borderRadius: BorderRadius.circular(12)),
-      ),
-    );
+            decoration: BoxDecoration(
+                color: Colors.yellow, borderRadius: BorderRadius.circular(12)),
+          ),
+        ));
   }
 }
