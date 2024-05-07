@@ -9,27 +9,39 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // list of todo tasks
+  List todoList = [
+    ["Make Tutorial", false],
+    ["Do Exercise", false]
+  ];
+
+  // checbox was tapped
+  void checkBoxChanged(bool? value, int index) {
+    setState(() {
+      todoList[index][1] = !todoList[index][1];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.yellow[200],
-      appBar: AppBar(
-        backgroundColor: Colors.yellow,
-        title: Text(
-          "ToDo app",
-          textAlign: TextAlign.center,
+        backgroundColor: Colors.yellow[200],
+        appBar: AppBar(
+          backgroundColor: Colors.yellow,
+          title: Text(
+            "ToDo app",
+            textAlign: TextAlign.center,
+          ),
+          elevation: 0,
         ),
-        elevation: 0,
-      ),
-      body: ListView(
-        children: [
-          ToDoTile(),
-          ToDoTile(),
-          ToDoTile(),
-          ToDoTile(),
-          ToDoTile(),
-        ],
-      ),
-    );
+        body: ListView.builder(
+          itemCount: todoList.length,
+          itemBuilder: (context, index) {
+            return ToDoTile(
+                taskName: todoList[index][0],
+                taskCompleted: todoList[index][1],
+                onChanged: (value) => checkBoxChanged(value, index));
+          },
+        ));
   }
 }
